@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Team1Web.Models.Team>
+
+@{
+    ViewData["Title"] = "BestTeams";
+}
+
+<h1>BestTeams</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idEnpresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.talde_puntuazioa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idEnpresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.talde_puntuazioa)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

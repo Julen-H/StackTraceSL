@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Team1Web.Models.GameData>
+
+@{
+    ViewData["Title"] = "Ranking";
+}
+
+<h1>Ranking</h1>
+
+
+@{
+    var gamesGroups = Model.OrderBy(x => x.jokoa)
+                          .GroupBy(x => x.jokoa)
+                          .OrderBy(group => group.Key);
+}
+
+@foreach (var group in gamesGroups)
+{
+    <h2>Game @group.Key Ranking</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.partidaId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.izena)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.idEnpresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jaiotzeData)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.puntuazioa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lanpostua)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jokoa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.partidaData)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in group)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.partidaId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.izena)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idEnpresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jaiotzeData)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.puntuazioa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lanpostua)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jokoa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.partidaData)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
